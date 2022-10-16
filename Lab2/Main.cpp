@@ -18,6 +18,11 @@ int main()
 	cout << endl;
 
 	f3.show();
+	cout << "-------------------------------------------" << endl;
+
+	Circle c;
+	c.print();
+	c.show();
 
 	return 0;
 }
