@@ -8,11 +8,8 @@ protected:
 	float size;
 
 public:
-	Figure();
-	Figure(int x, int y, int color = 1, float size = 1);
+	Figure(int x = 1, int y = 1, int color = 1, float size = 1);
 	~Figure();
-	
-	void Init();
 
 	int getX();
 	int getY();
@@ -27,8 +24,8 @@ public:
 	void setColor(int color);
 	void setSize(float size);
 
-	void print();
-	virtual void show();
+	virtual void print() = 0;
+	virtual void show() = 0;
 };
 
 
@@ -36,6 +33,9 @@ public:
 class Circle : public Figure
 {
 public:
+	Circle(int x, int y, int color, float size);
+
+	void print();
 	void show();
 };
 
@@ -47,7 +47,7 @@ private:
 	float w, h;
 
 public:
-	Rectangle(int x, int y, int w, int h, int color, float size);
+	Rectangle(int x, int y, int w, int h, int color);
 	~Rectangle();
 
 	int getW();
@@ -57,6 +57,7 @@ public:
 	void setW(int w);
 	void setH(int h);
 
+	void print();
 	void show();
 };
 
@@ -74,5 +75,6 @@ public:
 	void moveTo(int x1, int y1, int x2, int y2, int x3, int y3);
 	void moveRel(int dx1, int dy1, int dx2, int dy2, int dx3, int dy3);
 
+	void print();
 	void show();
 };

@@ -3,14 +3,8 @@
 
 using namespace std;
 
-Figure::Figure()
-{
-	Init();
-}
-
 Figure::Figure(int x, int y, int color, float size)
 {
-	Init();
 	moveTo(x, y);
 	setColor(color);
 	setSize(size);
@@ -18,13 +12,6 @@ Figure::Figure(int x, int y, int color, float size)
 
 Figure::~Figure()
 {}
-
-void Figure::Init()
-{
-	x = y = 1;
-	size = 1;
-	color = 1;
-}
 
 int Figure::getX()
 {
@@ -78,17 +65,20 @@ void Figure::setSize(float size)
 	if (size > 0)	this->size = size;
 }
 
-void Figure::print()
+
+
+Circle::Circle(int x, int y, int color, float size)
 {
-	cout << "x = " << getX() << "\ny = " << getY() << "\ncolor = " << getColor() << "\nsize = " << getSize() << endl;
+	this->x = x;
+	this->y = y;
+	this->color = color;
+	this->size = size;
 }
 
-void Figure::show()
+void Circle::print()
 {
-	cout << "Figure" << endl;
+	cout << "Circle:\nx = " << x << "\ny = " << y << "\ncolor = " << color << "\nsize = " << size << endl;
 }
-
-
 
 void Circle::show()
 {
@@ -97,12 +87,11 @@ void Circle::show()
 
 
 
-Rectangle::Rectangle(int x, int y, int w, int h, int color, float size)
+Rectangle::Rectangle(int x, int y, int w, int h, int color)
 {
 	moveTo(x, y);
 	setSides(w, h);
 	setColor(color);
-	setSize(size);
 }
 
 Rectangle::~Rectangle()
@@ -134,6 +123,11 @@ void Rectangle::setH(int h)
 	if (h > 0)	this->h = h;
 }
 
+void Rectangle::print()
+{
+	cout << "Rectangle:\nx = " << x << "\ny = " << y << "\nw = " << w << "\nh = " << h << "\ncolor = " << color << endl;
+}
+
 void Rectangle::show()
 {
 	cout << "Rectangle" << endl;
@@ -143,12 +137,12 @@ void Rectangle::show()
 
 Triangle::Triangle(int x1, int y1, int x2, int y2, int x3, int y3, int color)
 {
-
+	moveTo(x1, y1, x2, y2, x3, y3);
+	setColor(color);
 }
 
 Triangle::~Triangle()
-{
-}
+{}
 
 void Triangle::moveTo(int x1, int y1, int x2, int y2, int x3, int y3)
 {
@@ -172,6 +166,12 @@ void Triangle::moveRel(int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
 
 	this->x3 += dx3;
 	this->y3 += dy3;
+}
+
+void Triangle::print()
+{
+	cout << "Triangle:\nx1 = " << x1 << "\ny1 = " << y1 << "\nx2 = " << x2 << "\ny2 = " << y2
+		<< "\nx3 = " << x3 << "\ny3 = " << y3 << "\ncolor = " << color << endl;
 }
 
 void Triangle::show()
