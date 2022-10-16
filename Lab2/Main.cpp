@@ -5,24 +5,15 @@ using namespace std;
 
 int main()
 {
-	Figure f1;
-	f1.print();
-	cout << endl;
+	const int size = 3;
+	Figure* figures[size] = {
+		new Circle(100,100,0,10),
+		new Rectangle(10,10,10,10,1),
+		new Triangle(10,10,20,20,30,30,100),
+	};
 
-	Figure f2(10, 15);
-	f2.print();
-	cout << endl;
-
-	Figure f3(10, 15, 2, 5);
-	f3.print();
-	cout << endl;
-
-	f3.show();
-	cout << "-------------------------------------------" << endl;
-
-	Circle c;
-	c.print();
-	c.show();
+	for (int i = 0; i < size; i++)
+		figures[i]->print();
 
 	return 0;
 }
