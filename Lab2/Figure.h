@@ -8,7 +8,7 @@ protected:
 	float size;
 
 public:
-	Figure(int x = 1, int y = 1, int color = 1, float size = 1);
+	Figure(int x = 0, int y = 0, int color = 0, float size = 0);
 	~Figure();
 
 	int getX();
@@ -34,6 +34,7 @@ class Circle : public Figure
 {
 public:
 	Circle(int x, int y, int color, float size);
+	~Circle();
 
 	void print();
 	void show();
@@ -41,14 +42,14 @@ public:
 
 
 
-class Rectangle : public Figure
+class Rect : public Figure
 {
 private:
-	float w, h;
+	int w, h;
 
 public:
-	Rectangle(int x, int y, int w, int h, int color);
-	~Rectangle();
+	Rect(int x, int y, int w, int h, int color);
+	~Rect();
 
 	int getW();
 	int getH();

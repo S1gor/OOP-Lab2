@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Figure.h"
+#include "graphics.h"
 
 using namespace std;
 
@@ -75,6 +76,9 @@ Circle::Circle(int x, int y, int color, float size)
 	this->size = size;
 }
 
+Circle::~Circle()
+{}
+
 void Circle::print()
 {
 	cout << "Circle:\nx = " << x << "\ny = " << y << "\ncolor = " << color << "\nsize = " << size << endl;
@@ -82,55 +86,57 @@ void Circle::print()
 
 void Circle::show()
 {
-	cout << "Circle" << endl;
+	setcolor(color);
+	circle(x, y, size);
 }
 
 
 
-Rectangle::Rectangle(int x, int y, int w, int h, int color)
+Rect::Rect(int x, int y, int w, int h, int color)
 {
 	moveTo(x, y);
 	setSides(w, h);
 	setColor(color);
 }
 
-Rectangle::~Rectangle()
+Rect::~Rect()
 {}
 
-int Rectangle::getW()
+int Rect::getW()
 {
 	return w;
 }
 
-int Rectangle::getH()
+int Rect::getH()
 {
 	return h;
 }
 
-void Rectangle::setSides(int w, int h)
+void Rect::setSides(int w, int h)
 {
 	setW(w);
 	setH(h);
 }
 
-void Rectangle::setW(int w)
+void Rect::setW(int w)
 {
 	if (w > 0)	this->w = w;
 }
 
-void Rectangle::setH(int h)
+void Rect::setH(int h)
 {
 	if (h > 0)	this->h = h;
 }
 
-void Rectangle::print()
+void Rect::print()
 {
 	cout << "Rectangle:\nx = " << x << "\ny = " << y << "\nw = " << w << "\nh = " << h << "\ncolor = " << color << endl;
 }
 
-void Rectangle::show()
+void Rect::show()
 {
-	cout << "Rectangle" << endl;
+	setcolor(color);
+	rectangle(x, y, x + w, y + h);
 }
 
 
