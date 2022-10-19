@@ -81,7 +81,7 @@ Circle::~Circle()
 
 void Circle::print()
 {
-	cout << "Circle:\nx = " << x << "\ny = " << y << "\ncolor = " << color << "\nsize = " << size << endl;
+	cout << "Circle:\nx = " << x << "\ny = " << y << "\ncolor = " << color << "\nsize = " << size << endl << endl;
 }
 
 void Circle::show()
@@ -130,7 +130,7 @@ void Rect::setH(int h)
 
 void Rect::print()
 {
-	cout << "Rectangle:\nx = " << x << "\ny = " << y << "\nw = " << w << "\nh = " << h << "\ncolor = " << color << endl;
+	cout << "Rectangle:\nx = " << x << "\ny = " << y << "\nw = " << w << "\nh = " << h << "\ncolor = " << color << endl << endl;
 }
 
 void Rect::show()
@@ -162,25 +162,91 @@ void Triangle::moveTo(int x1, int y1, int x2, int y2, int x3, int y3)
 	this->y3 = y3;
 }
 
-void Triangle::moveRel(int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
-{
-	this->x1 += dx1;
-	this->y1 += dy1;
-
-	this->x2 += dx2;
-	this->y2 += dy2;
-
-	this->x3 += dx3;
-	this->y3 += dy3;
-}
-
 void Triangle::print()
 {
 	cout << "Triangle:\nx1 = " << x1 << "\ny1 = " << y1 << "\nx2 = " << x2 << "\ny2 = " << y2
-		<< "\nx3 = " << x3 << "\ny3 = " << y3 << "\ncolor = " << color << endl;
+		<< "\nx3 = " << x3 << "\ny3 = " << y3 << "\ncolor = " << color << endl << endl;
 }
 
 void Triangle::show()
 {
-	cout << "Triangle" << endl;
+	int poly[8];
+
+	poly[0] = x1;
+	poly[1] = y1;
+
+	poly[2] = x2;
+	poly[3] = y2;
+	
+	poly[4] = x3;
+	poly[5] = y3;
+	
+	poly[6] = poly[0];
+	poly[7] = poly[1];
+
+	drawpoly(4, poly);
+
+	setcolor(color);
+	setfillpattern((char*)poly, color);
+	fillpoly(4, poly);
+}
+
+
+
+Star::Star(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int x5, int y5, int color)
+{
+	moveTo(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5);
+	setColor(color);
+}
+
+Star::~Star()
+{}
+
+void Star::moveTo(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int x5, int y5)
+{
+	this->x1 = x1;
+	this->y1 = y1;
+
+	this->x2 = x2;
+	this->y2 = y2;
+
+	this->x3 = x3;
+	this->y3 = y3;
+
+	this->x4 = x4;
+	this->y4 = y4;
+
+	this->x5 = x5;
+	this->y5 = y5;
+}
+
+void Star::print()
+{
+	cout << "Star:\nx1 = " << x1 << "\ny1 = " << y1 << "\nx2 = " << x2 << "\ny2 = " << y2 << "\nx3 = " << x3 << "\ny3 = " << y3
+		<< "\nx4 = " << x4 << "\ny4 = " << y4 << "\nx5 = " << x5 << "\ny5 = " << y5 << "\ncolor = " << color << endl << endl;
+}
+
+void Star::show()
+{
+	int poly[12];
+
+	poly[0] = x1;
+	poly[1] = y1;
+
+	poly[2] = x2;
+	poly[3] = y2;
+
+	poly[4] = x3;
+	poly[5] = y3;
+
+	poly[6] = x4;
+	poly[7] = y4;
+
+	poly[8] = x5;
+	poly[9] = y5;
+
+	poly[10] = poly[0];
+	poly[11] = poly[1];
+
+	drawpoly(6, poly);
 }

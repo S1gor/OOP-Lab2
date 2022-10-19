@@ -74,7 +74,23 @@ public:
 	~Triangle();
 
 	void moveTo(int x1, int y1, int x2, int y2, int x3, int y3);
-	void moveRel(int dx1, int dy1, int dx2, int dy2, int dx3, int dy3);
+
+	void print();
+	void show();
+};
+
+
+
+class Star : public Figure
+{
+private:
+	int x1, y1, x2, y2, x3, y3, x4, y4, x5, y5;
+
+public:
+	Star(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int x5, int y5, int color);
+	~Star();
+
+	void moveTo(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int x5, int y5);
 
 	void print();
 	void show();
